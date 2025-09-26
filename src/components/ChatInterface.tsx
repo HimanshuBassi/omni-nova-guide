@@ -22,7 +22,7 @@ export const ChatInterface = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hello! I'm BLAZE AI, your ultimate personal intelligence assistant. I'm here to help you with studying, device control, research, and general assistance. How can I help you today?",
+      text: "Hello! I'm B, your ultimate personal intelligence assistant. I'm here to help you with studying, device control, research, and general assistance. How can I help you today?",
       isUser: false,
       timestamp: new Date(),
     }
@@ -125,7 +125,7 @@ export const ChatInterface = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold bg-ai-gradient bg-clip-text text-transparent">
-                BLAZE AI
+                B
               </h1>
               <p className="text-sm text-muted-foreground">Your Personal Intelligence Assistant</p>
             </div>
@@ -171,7 +171,7 @@ export const ChatInterface = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder={`Ask BLAZE AI anything... (${currentMode.toUpperCase()} mode)`}
+              placeholder={`Ask B anything... (${currentMode.toUpperCase()} mode)`}
               className="bg-ai-elevated border-border focus:ring-primary"
               disabled={isLoading}
             />
