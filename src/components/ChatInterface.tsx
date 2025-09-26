@@ -74,6 +74,34 @@ export const ChatInterface = () => {
   };
 
   const generateAIResponse = (input: string, mode: AIMode): string => {
+    const lowerInput = input.toLowerCase().trim();
+    
+    // Handle specific voice commands
+    if (lowerInput.includes('search spotify') || (lowerInput.includes('spotify') && lowerInput.includes('search'))) {
+      return "🎵 Searching Spotify for you... I'd open your Spotify app and search for music, but I need device integration for that. For now, I can help you discover new music - what genre or artist are you looking for?";
+    }
+    
+    if (lowerInput.includes('hello b') || lowerInput.includes('hey b')) {
+      return "Hello! I'm B, your AI assistant. I'm here and ready to help with anything you need - from device control to research to learning assistance!";
+    }
+    
+    if (lowerInput.includes('play music') || lowerInput.includes('play song')) {
+      return "🎵 I'd love to play music for you! Currently, I need device integration to control your music apps directly. You can ask me about music recommendations or open your preferred music app manually.";
+    }
+    
+    if (lowerInput.includes('call') || lowerInput.includes('phone')) {
+      return "📞 I can help you with calling! Currently, I need phone integration to make actual calls. You can tell me who you want to call and I'll guide you through it.";
+    }
+    
+    if (lowerInput.includes('weather')) {
+      return "🌤️ I'd check the weather for you! For real-time weather, I need internet access. You can ask me about weather patterns or tell me your location for general advice.";
+    }
+    
+    if (lowerInput.includes('open') && (lowerInput.includes('app') || lowerInput.includes('application'))) {
+      return "📱 I'd open that app for you! With proper device integration, I could launch applications directly. For now, you can open apps manually or tell me what you're trying to accomplish.";
+    }
+    
+    // Default responses by mode
     const responses = {
       chat: [
         `I understand you're asking about "${input}". Let me help you with that right away.`,
