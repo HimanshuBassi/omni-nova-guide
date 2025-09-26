@@ -37,6 +37,11 @@ export const VoiceButton: React.FC<VoiceButtonProps> = ({
 
       recognition.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript;
+        console.log('Voice recognition result:', transcript);
+        toast({
+          title: "✅ Voice Captured!",
+          description: `You said: "${transcript}"`,
+        });
         onResult(transcript);
         onListeningChange(false);
       };
@@ -67,22 +72,28 @@ export const VoiceButton: React.FC<VoiceButtonProps> = ({
     if (!isSupported) {
       toast({
         title: "Voice Not Supported",
-        description: "Your browser doesn't support voice recognition. Please use a modern browser.",
+        description: "Your browser doesn't support voice recognition. Please use a modern browser like Chrome.",
         variant: "destructive",
       });
       return;
     }
 
     if (isListening) {
+      console.log('Stopping voice recognition...');
       recognitionRef.current?.stop();
     } else {
+      console.log('Starting voice recognition...');
+      toast({
+        title: "🎤 Listening...",
+        description: "Speak now! Say 'Hello B' or any message.",
+      });
       try {
         recognitionRef.current?.start();
       } catch (error) {
         console.error('Failed to start speech recognition:', error);
         toast({
           title: "Voice Error",
-          description: "Failed to start voice recognition. Please check your microphone permissions.",
+          description: "Failed to start voice recognition. Please check your microphone permissions and try again.",
           variant: "destructive",
         });
       }
